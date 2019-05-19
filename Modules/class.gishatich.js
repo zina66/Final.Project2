@@ -25,7 +25,8 @@ module.exports = class Gishatich extends LivingCreature{
     eat() {
         this.getNewCoordinates();
         var emptyCells = this.chooseCell(2);
-        var newCell = random(emptyCells);
+         var newCell = Random(this.emptyCells(2));
+
         if (newCell) {
             var newX = newCell[0];
             var newY = newCell[1];
@@ -53,7 +54,7 @@ module.exports = class Gishatich extends LivingCreature{
     mul() {
         this.getNewCoordinates();
         var emptyCells = this.chooseCell(1);
-        var newCell = random(emptyCells);
+        var newCell = Random(this.emptyCells(2));
         if (newCell) {
             var newX = newCell[0];
             var newY = newCell[1];
@@ -79,7 +80,7 @@ module.exports = class Gishatich extends LivingCreature{
     move() {
         this.getNewCoordinates();
         var emptyCells = this.chooseCell(2);
-        var newCell = random(emptyCells);
+        var newCell = Random(this.emptyCells(2));
         if (newCell) {
             this.energy--;
             var newX = newCell[0];
