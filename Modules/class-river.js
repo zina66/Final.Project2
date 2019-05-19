@@ -31,16 +31,16 @@ module.exports = class river extends LivingCreature {
                 rivArr.push(newriver);
                 var newriver = new river(this.x - 1, this.y, this.index);
                 rivArr.push(newriver);
-                for (var i in GrassEaterArr) {
-                    if (matrix[this.y][this.x - 1] == GrassEaterArr[i].x && matrix[this.y - 1][this.x] == GrassEaterArr[i].y) {
-                        GrassEaterArr.splice(i, 1);
+                for (var i in greaterArr) {
+                    if (matrix[this.y][this.x - 1] == greaterArr[i].x && matrix[this.y - 1][this.x] == greaterArr[i].y) {
+                        greaterArr.splice(i, 1);
                         break;
                     }
                 }
 
-                for (var i in GrassEaterEaterArr) {
-                    if (matrix[this.y][this.x - 1] == GrassEaterEaterArr[i].x && matrix[this.y - 1][this.x] == GrassEaterEaterArr[i].y) {
-                        GrassEaterEaterArr.splice(i, 1);
+                for (var i in GishatichArr) {
+                    if (matrix[this.y][this.x - 1] == GishatichArr[i].x && matrix[this.y - 1][this.x] == GishatichArr[i].y) {
+                        GishatichArr.splice(i, 1);
                         break;
                     }
                 }
@@ -52,16 +52,16 @@ module.exports = class river extends LivingCreature {
                 rivArr.push(newriver);
                 var newriver = new river(this.x - 1, this.y, this.index);
                 rivArr.push(newriver);
-                for (var i in GrassEaterArr) {
-                    if (matrix[this.y][this.x - 1] == GrassEaterArr[i].x && matrix[this.y - 1][this.x] == GrassEaterArr[i].y) {
-                        GrassEaterArr.splice(i, 1);
+                for (var i in greaterArr) {
+                    if (matrix[this.y][this.x - 1] == greaterArr[i].x && matrix[this.y - 1][this.x] == greaterArr[i].y) {
+                        greaterArr.splice(i, 1);
                         break;
                     }
                 }
 
-                for (var i in GrassEaterEaterArr) {
-                    if (matrix[this.y][this.x - 1] == GrassEaterEaterArr[i].x && matrix[this.y - 1][this.x] == GrassEaterEaterArr[i].y) {
-                        GrassEaterEaterArr.splice(i, 1);
+                for (var i in GishatichArr) {
+                    if (matrix[this.y][this.x - 1] == GishatichArr[i].x && matrix[this.y - 1][this.x] == GishatichArr[i].y) {
+                        GishatichArr.splice(i, 1);
                         break;
                     }
                 }
@@ -73,16 +73,16 @@ module.exports = class river extends LivingCreature {
                 rivArr.push(newriver);
                 var newriver = new river(this.x - 1, this.y, this.index);
                 rivArr.push(newriver);
-                for (var i in GrassEaterArr) {
-                    if (matrix[this.y][this.x - 1] == GrassEaterArr[i].x && matrix[this.y - 1][this.x] == GrassEaterArr[i].y) {
-                        GrassEaterArr.splice(i, 1);
+                for (var i in greaterArr) {
+                    if (matrix[this.y][this.x - 1] == greaterArr[i].x && matrix[this.y - 1][this.x] == greaterArr[i].y) {
+                        greaterArr.splice(i, 1);
                         break;
                     }
                 }
 
-                for (var i in GrassEaterEaterArr) {
-                    if (matrix[this.y][this.x - 1] == GrassEaterEaterArr[i].x && matrix[this.y - 1][this.x] == GrassEaterEaterArr[i].y) {
-                        GrassEaterEaterArr.splice(i, 1);
+                for (var i in GishatichArr) {
+                    if (matrix[this.y][this.x - 1] == GishatichArr[i].x && matrix[this.y - 1][this.x] == GishatichArr[i].y) {
+                        GishatichArr.splice(i, 1);
                         break;
                     }
                 }

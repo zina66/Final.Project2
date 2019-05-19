@@ -1,6 +1,5 @@
 var LivingCreature = require("./LivingCreature.js");
 
-
 module.exports = class lightning extends LivingCreature {
     constructor(x, y, index) {
         super(x, y, index);
@@ -25,35 +24,25 @@ module.exports = class lightning extends LivingCreature {
     }
     move() {
         this.getNewCoordinates();
-         var emptyCells = this.chooseCell(0);
-        var index = Math.floor(Math.random() * emptyCells.length);
-        var newCell = emptyCells[index];
+        var newCell = Random(this.chooseCell(0) * 5);
         if (newCell) {
+            this.energy--;
+        }
+        else if (this.energy <= 0) {
             this.die();
         }
-        lightningcount++;
     }
     eat() {
         this.getNewCoordinates();
-        this.multiply++;
-        var emptyCells = this.chooseCell(1);
-        var index = Math.floor(Math.random() * emptyCells.length);
-        var newCell = emptyCells[index];
+        var newCell = Random(this.chooseCell(1) * 5);
         if (newCell) {
-            if (this.multiply >= 4) {
-                var newX = newCell[0];
-                var newY = newCell[1];
-                matrix[this.y][this.x] = 0;
-                matrix[newY][newX] = 4;
-                this.y = newY;
-                this.x = newX;
-                for (var i in grassArr) {
-                    if (newX == grassArr[i].x && newY == grassArr[i].y) {
-                        grassArr.splice(i, 1);
-                        break;
-                    }
-                }
-            }
+            var newX = newCell[0];
+            var newY = newCell[1];
+            matrix[this.y][this.x] = 0;
+            matrix[newY][newX] = 5;
+            this.y = newY;
+            this.x = newX;
+            this.energy++;
         }
         else {
             this.move();
