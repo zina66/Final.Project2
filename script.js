@@ -12,7 +12,7 @@ function setup() {
     background('#acacac');
 }
 //function exanak stanalu hamar
-function drawwheater(w){
+function draw_wheater(w){
     var p = document.getElementById('season');
     var weather = w;
     console.log(weather);
@@ -43,7 +43,7 @@ function drawMatrix(matrix) {
                 if(weatherclient == "Summer"){
                     fill("green");
                 }
-                else if(weatherclient != "Summer"){
+                else{
                     fill("#A79F20");
                 }
             }

@@ -110,6 +110,7 @@ function drawserver() {
     //matrixy uxarkum en clientin
     io.sockets.emit("matrix", matrix);
 }
+//exanaki hamar
 function draw_wheater() {
     Wheaterinit++;
     if (Wheaterinit == 5) {
