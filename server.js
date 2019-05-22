@@ -28,7 +28,11 @@ rivArr = [];
 
 //popoxakan exanaki hamar
 Weather = "summer";
+
 Wheaterinit = 1;
+grassinit = 0;
+grasseaterinit = 0;
+gishatichinit = 0;
 //matrix generacnox function
 var w = 50;
 var h = 60;
@@ -112,35 +116,115 @@ function drawserver() {
 }
 //exanaki hamar
 function draw_wheater() {
-    Wheaterinit++;
-    if (Wheaterinit == 5) {
-        Wheaterinit = 1;
+    Weatherinit++;
+    if (Weatherinit == 5) {
+        Weatherinit = 1;
     }
-    if (Wheaterinit == 4) {
-        Wheaterinit = "winter";
+    if (Weatherinit == 4) {
+        Weather = "winter";
     }
-    if (Wheaterinit == 3) {
-        Wheaterinit = "autumn";
+    if (Weatherinit == 3) {
+        Weather = "autumn";
     }
-    if (Wheaterinit == 2) {
-        Wheaterinit = "spring";
+    if (Weatherinit == 2) {
+        Weather = "spring";
     }
-    if (Wheaterinit == 1) {
-        Wheaterinit = "summer";
+    if (Weatherinit == 1) {
+        Weather = "summer";
     }
     //exanaky uxarkum em clientin
     io.sockets.emit("exanak", Weather);
 
-
 }
 //connectiona stexcum scriptic ekac infoi himan vra script.js i het mousePressed i jamanak
-// io.on('connection', function (socket) {
-//     socket.on("Sxmvec", function (arr) {
-//         //stexi code y chem grel esel duq greq))
-//         //sranic avel chem hushelu
-//         //ba
-//     });
-// });
+io.on('connection', function (socket) {
+    socket.on("Sxmvec", function (arr) {
+        var x = arr[0];
+        var y = arr[1];
 
+        var directions = [
+            [x - 1, y - 1],
+            [x, y - 1],
+            [x + 1, y - 1],
+            [x - 1, y],
+            [x + 1, y],
+            [x - 1, y + 1],
+            [x, y + 1],
+            [x + 1, y + 1]
+        ];
+
+        if (matrix[y][x] == 1) {
+            for (var i in grassArr) {
+                if (y == grassArr[i].y && x == grassArr) {
+                    grassArr.splice(i, 1);
+                    break;
+                }
+            }
+        }
+        if (matrix[y][x] == 2) {
+            for (var i in grasseaterArr) {
+                if (y == grasseaterArr[i].y && x == grasseaterArr) {
+                    grasseaterArr.splice(i, 1);
+                    break;
+                }
+            }
+        }
+        if (matrix[y][x] == 3) {
+            for (var i in predatorArr) {
+                if (y == predatorArr[i].y && x == predatorArr) {
+                    predatorArr.splice(i, 1);
+                    break;
+                }
+            }
+        }
+        matrix[y][x] = 0;
+
+        for (var i in directions) {
+            var harevanx = directions[i][0];
+            var harevany = directions[i][1];
+            if (harevanx >= 0 && harevanx < matrix[0].length && harevany >= 0 && harevany < matrix[0].length) {
+                for (var i in grassArr) {
+                    if (harevany == grassArr[i].y && harevanx == grassArr[i]) {
+                        grassArr.splice(i, 1);
+                        break;
+                    }
+                }
+            }
+            else if(matrix[harevany][harevanx] == 2){
+                for (var i in grasseaterArr) {
+                    if (harevany == grasseaterArr[i].y && harevanx == grasseaterArr[i]) {
+                        grasseaterArr.splice(i, 1);
+                        break;
+                    }
+                }
+            }
+            else if(matrix[harevany][harevanx] == 3){
+                for (var i in predatorArr) {
+                    if (harevany == predatorArr[i].y && harevanx == predatorArr[i]) {
+                        predatorArr.splice(i, 1);
+                        break;
+                    }
+                }
+            }
+            matrix[harevany][harevanx] = 0;
+        }
+        io.sockets.emit("matrix",matrix);
+    });
+
+    socket.on("armageton", function(){
+        for(var y = 0; y< matrix.length; y++){
+            for (x = 0;x<matrix[y].length[y];x++){
+                matrix[y][x] = 6;
+            }
+        }
+        grassArr.length = 0;
+        grasseaterArr.length = 0;
+        predatorArr.length = 0;
+        io.sockets.emit("matrix",matrix);
+    })
+});
+
+//statika
+var obj = {"info"}
 setInterval(drawserver, 3000);
 setInterval(draw_wheater, 3000);
