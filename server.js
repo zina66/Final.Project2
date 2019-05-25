@@ -2,6 +2,7 @@ var express = require("express");
 var app = express();
 var server = require("http").Server(app);
 var io = require("socket.io")(server);
+var fs = require('fs');
 
 app.use(express.static("."));
 
@@ -29,7 +30,7 @@ rivArr = [];
 //popoxakan exanaki hamar
 Weather = "summer";
 
-Wheaterinit = 1;
+Weatherinit = 1;
 grassinit = 0;
 grasseaterinit = 0;
 gishatichinit = 0;
@@ -143,14 +144,14 @@ io.on('connection', function (socket) {
         var y = arr[1];
 
         var directions = [
-            [x - 1, y - 1],
             [x, y - 1],
-            [x + 1, y - 1],
-            [x - 1, y],
-            [x + 1, y],
-            [x - 1, y + 1],
+            [x, y - 2],
+            [x, y - 3],
+            [x, y - 4],
             [x, y + 1],
-            [x + 1, y + 1]
+            [x + 1, y],
+            [x - 1, y]
+
         ];
 
         if (matrix[y][x] == 1) {
@@ -225,6 +226,14 @@ io.on('connection', function (socket) {
 });
 
 //statika
-var obj = {"info"}
+var obj = {"info":[] };
+
+function main(){
+    var file = "statics.json";
+    obj.info.push({"cnvac xoteri qanaky":grassinit, "cnvac xotakerneri qanaky":grasseaterinit});
+    fs.writeFileSync(file, JSON.stringify(obj,null,3));
+}
+
 setInterval(drawserver, 3000);
 setInterval(draw_wheater, 3000);
+setInterval(main,3000);
