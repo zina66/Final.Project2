@@ -1,12 +1,29 @@
 <html>
 
 <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.14/p5.js"></script>
     <script src="/socket.io/socket.io.js"></script>
     <script src="script.js"></script>
+    <style>
+    .boom{
+        width: 100%;
+        height: 100%;
+        background-color: black;
+        color: #fff;
+        text-align: center;
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+    }
+    </style>
 </head>
 
 <body>
+    <div class="boom">
+        <h1>Boom!</h1>
+    </div>
     <p id = "seasons"></p>
 </body>
 

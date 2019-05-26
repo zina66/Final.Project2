@@ -24,7 +24,7 @@ module.exports = class lightning extends LivingCreature {
     }
     move() {
         this.getNewCoordinates();
-        var newCell = Random(this.chooseCell(0) * 5);
+        var newCell = Random(this.chooseCell(1) * 5);
         if (newCell) {
             this.energy--;
         }
@@ -34,7 +34,7 @@ module.exports = class lightning extends LivingCreature {
     }
     eat() {
         this.getNewCoordinates();
-        var newCell = Random(this.chooseCell(1) * 5);
+        var newCell = Random(this.chooseCell(2) * 5);
         if (newCell) {
             var newX = newCell[0];
             var newY = newCell[1];
